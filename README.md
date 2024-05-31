@@ -1,70 +1,127 @@
-# Getting Started with Create React App
+# Movie Library Web Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Features
+1. **User Authentication** (Sign In/Sign Up)
+2. **Search Movies** using OMDB API
+3. **Create and Manage Movie Lists** (public and private)
+4. **Responsive and User-Friendly UI**
 
-## Available Scripts
+## Running the Project Locally
 
-In the project directory, you can run:
+### Backend
 
-### `npm start`
+1. **Clone the backend repository:**
+   ```bash
+   git clone https://github.com/blamex321/movie-list-backend.git
+   cd movie-list-backend
+   ```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+3. **Add a `.env` file** with the following variables:
+   ```env
+   MONGO_URI=your_mongodb_uri (replace with your details)
+   JWT_SECRET=your_jwt_secret (replace with your details)
+   ```
 
-### `npm test`
+4. **Start the server:**
+   ```bash
+   node index.js
+   (OR)
+   nodemon
+   ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Frontend
 
-### `npm run build`
+1. **Clone the frontend repository:**
+   ```bash
+   git clone https://github.com/blamex321/movie-list-frontend.git
+   cd movie-list-frontend
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. **Add a `.env` file** with the following variable:
+   ```env
+   REACT_APP_OMDB_API_KEY=your_omdb_api_key
+   JWT_SECRET=your_jwt_secret #(same as backend)
+   REACT_APP_BACKEND_URL=your_backend_url #(include "/api" at the end)
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. **Start the frontend:**
+   ```bash
+   npm start
+   ```
 
-### `npm run eject`
+## Deployment
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Backend
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**Deploy the backend on Heroku:**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. **Create a new Heroku app.**
+2. **Push the code to Heroku.**
+   ```bash
+   git push heroku main
+   ```
+3. **Set the environment variables on Heroku:**
+   ```bash
+   heroku config:set MONGO_URI=your_mongodb_uri
+   heroku config:set JWT_SECRET=your_jwt_secret
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Frontend
 
-## Learn More
+**Deploy the frontend on Vercel/Netlify:**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. **Create a new Vercel/Netlify project.**
+2. **Connect your repository.**
+3. **Set the environment variables on Vercel/Netlify.**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Links
 
-### Code Splitting
+- [Deployed Application (frontend)](https://main.d3h6y8slh0sgjz.amplifyapp.com/login)
+- [Backend Code](https://movie-list-backend-68qd.onrender.com/api)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Project Structure
 
-### Analyzing the Bundle Size
+### Backend Repository
+```
+backend/
+├── models/
+│   ├── User.js
+│   └── MovieList.js
+├── routes/
+│   ├── auth.js
+│   └── movieList.js
+├── middleware/
+│   └── auth.js
+├── .env
+├── server.js
+└── package.json
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Frontend Repository
+```
+frontend/
+├── public/
+├── src/
+│   ├── components/
+│   │   ├── Login.js
+│   │   ├── Register.js
+│   │   ├── MovieSearch.js
+│   │   ├── MovieList.js
+│   │   └── ProtectedRoute.js
+│   ├── context/
+│   │   └── AuthContext.js
+│   ├── App.js
+│   ├── index.js
+│   └── .env
+└── package.json
+```
